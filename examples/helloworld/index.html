@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello 🌮TacoJs.</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="appRoot">
+        <br>
+        <br>
+        <span class="code">
+            <span style="color: #f92672;">npm </span>
+            install
+            <span style="color: #a6e22e;">@tacopie/taco</span>
+        </span>
+        <br>
+        <br>
+    </div>
+    <script id="appTpl" type="text/x-template">
+        <link rel="stylesheet" href="./welcome.css">
+        <header>
+            <h1>
+                {{ title }}
+            </h1>
+            <slot></slot>
+        </header>
+        <div id="badges">
+            <img $for="badge of badges" src:="badge">
+        </div>
+        <div $if="titleComplated" style:="hiddenStyle" id="content">
+            <a href:="repoURL" target="_blank">
+                <img id="github" src="https://img.shields.io/github/stars/zhzLuke96/TacoJs.svg?style=social">
+            </a>
+        </div>
+    </script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.3.0/webcomponents-loader.js"></script>
+    <script src="https://unpkg.com/@tacopie/taco/dist/_index.js"></script>
+    <script>
+        const badges = [
+            "https://travis-ci.org/zhzLuke96/TacoJs.svg?branch=master",
+            "https://coveralls.io/repos/github/zhzLuke96/TacoJs/badge.svg?branch=master",
+            "https://img.shields.io/github/license/zhzluke96/TacoJs",
+            "https://img.shields.io/github/languages/top/zhzluke96/TacoJs",
+        ]
+        const $ = q => document.querySelector(q);
+        const {
+            reactive
+        } = Taco;
+        let nextTitle = "Hello 🌮TacoJs!".split("");
+        let timer = null;
+        class welcomeApp {
+            setup() {
+                return reactive({
+                    title: "_",
+                    titleComplated: false,
+                    hiddenStyle: "opacity: 0",
+                    badges,
+                    repoURL: "https://github.com/zhzLuke96/TacoJs"
+                })
+            }
+            template() {
+                return $("#appTpl").innerHTML
+            }
+            created() {
+                timer = setInterval(() => {
+                    if (nextTitle.length == 0) {
+                        clearInterval(timer)
+                        this.title = this.title.slice(0, -1)
+                        this.titleComplated = true
+                        setTimeout(() => {
+                            this.hiddenStyle = "opacity: 1"
+                        }, 1000);
+                        return
+                    }
+                    this.title = this.title.slice(0, -1) + nextTitle.shift() + "_"
+                }, 300);
+            }
+        }
+        Taco.createApp(new welcomeApp()).mount($("#appRoot"));
+    </script>
+</body>
+
+</html>

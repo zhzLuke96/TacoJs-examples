@@ -1,0 +1,41 @@
+* {
+    transition: .3s all;
+}
+
+header {
+    text-align: center;
+}
+
+#badges {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#content {
+    padding: 1rem;
+    text-align: center;
+}
+
+#github {
+    transition: 1s all;
+    padding: 1rem;
+    animation-timing-function: ease-in-out;
+    animation-name: breathe;
+    animation-duration: 2700ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@-webkit-keyframes breathe {
+    0% {
+        /* opacity: .2; */
+        transform: scale(1.5);
+    }
+
+    100% {
+        /* opacity: 1; */
+        transform: scale(1);
+    }
+}
