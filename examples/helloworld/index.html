@@ -29,7 +29,7 @@
             </h1>
             <slot></slot>
         </header>
-        <div $if="titleComplated" style:="hiddenStyle" id="content">
+        <div style:="hiddenStyle" id="content">
             <div id="badges">
                 <img $for="badge of badges" src:="badge">
             </div>
@@ -46,6 +46,8 @@
             "https://coveralls.io/repos/github/zhzLuke96/TacoJs/badge.svg?branch=master",
             "https://img.shields.io/github/license/zhzluke96/TacoJs",
             "https://img.shields.io/github/languages/top/zhzluke96/TacoJs",
+            "https://img.shields.io/github/package-json/v/zhzluke96/TacoJs",
+            "https://img.shields.io/github/languages/code-size/zhzluke96/TacoJs?label=size"
         ]
         const $ = q => document.querySelector(q);
         const {

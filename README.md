@@ -10,7 +10,7 @@ tacojs examples.
 - [markdownEditor](./examples/mdEditor/index.html)
 
 *need packing*:
-- [shopping-cart](.//examples/shopping-cart/)
+- [shopping-cart](./examples/shopping-cart/)
 
 # LISCENSE
 MIT
