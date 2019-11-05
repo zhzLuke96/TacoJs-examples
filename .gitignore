@@ -68,3 +68,6 @@ dist/
 
 # lock file
 package-lock.json
+
+# local taco
+taco.js

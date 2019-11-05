@@ -29,17 +29,17 @@
             </h1>
             <slot></slot>
         </header>
-        <div id="badges">
-            <img $for="badge of badges" src:="badge">
-        </div>
         <div $if="titleComplated" style:="hiddenStyle" id="content">
+            <div id="badges">
+                <img $for="badge of badges" src:="badge">
+            </div>
             <a href:="repoURL" target="_blank">
                 <img id="github" src="https://img.shields.io/github/stars/zhzLuke96/TacoJs.svg?style=social">
             </a>
         </div>
     </script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.3.0/webcomponents-loader.js"></script>
-    <script src="https://unpkg.com/@tacopie/taco/dist/_index.js"></script>
+    <script src="https://unpkg.com/@tacopie/taco"></script>
     <script>
         const badges = [
             "https://travis-ci.org/zhzLuke96/TacoJs.svg?branch=master",
